@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#2c6693">
 <meta name="color-scheme" content="light">
-<title>PHU EMR</title>
+<title>Electronic Medical Record (EMR) · Ministry of Health</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700;900&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
@@ -745,6 +745,57 @@ details.sgroup .ilist{border:0;border-radius:0;box-shadow:none}
 .hbx{display:grid;grid-template-columns:minmax(110px,38%) 1fr;gap:10px;margin-top:2px}
 .hbticks{position:relative;height:18px;border-top:2px solid #000;margin-left:4px}
 .hbticks span{position:absolute;top:2px;transform:translateX(-50%);font-size:11.5px;font-weight:700;color:#000}
+
+/* full title wraps instead of being cut off */
+.appbar .ctxbtn b{white-space:normal;overflow:visible;font-size:clamp(18px,5.2vw,26px);line-height:1.15}
+
+/* ---------- one-page form: every question on its own full-width row ---------- */
+body[data-view="form"][data-fmode="all"] .app{height:auto;display:block;padding-bottom:110px}
+body[data-view="form"][data-fmode="all"] main{display:block;padding-bottom:0}
+.fmode{margin:0 0 10px}
+.fmode button{font-size:13px}
+.allform{display:flex;flex-direction:column;gap:14px;padding-bottom:20px}
+.fsec{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.fsh{display:flex;align-items:center;gap:10px;padding:13px 16px;background:var(--dhis);color:#fff;font-size:16px;font-weight:900}
+.fsh i{font-style:normal;width:28px;height:28px;border-radius:50%;background:#fff;color:var(--dhis);display:grid;place-items:center;font-size:14px;font-weight:900;flex:0 0 auto}
+.fsb{display:flex;flex-direction:column}
+.fsb>.fld{padding:16px;border-bottom:1px solid var(--line2);margin:0}
+.fsb>.fld:last-child{border-bottom:0}
+.fsb>.fld.hid{display:none}
+.fsb>.fld>label{font-size:17px;font-weight:900;color:var(--dhis3);margin-bottom:10px;display:flex;gap:8px;align-items:baseline}
+.fsb>.fld>label[data-n]:not([data-n=""])::before{content:attr(data-n) ".";color:var(--dhis2);min-width:26px;flex:0 0 auto}
+.fsb .cbox{max-height:340px}
+.fsb .doses{max-height:none}
+@media (min-width:700px){ body[data-view="form"][data-fmode="all"] main{max-width:820px;margin:0 auto} }
+
+/* ---------- patient ID, follow-up and resume ---------- */
+.pidrow{display:flex;flex-direction:column;gap:8px}
+.pidrow input{font-family:"Roboto Mono",ui-monospace,monospace;font-size:20px;letter-spacing:.08em;text-transform:uppercase}
+.pidok{margin-top:10px;background:#e6f6f0;border:2px solid #009E73;border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;font-size:14px;color:var(--ink)}
+.pidok b{color:#00664a}
+.pidbad{margin:10px 0 0;color:var(--verm);font-weight:700}
+.pidwarn{margin:10px 0 0;color:var(--dhis3);font-weight:700}
+.pidbig{font-family:"Roboto Mono",ui-monospace,monospace;font-size:clamp(18px,6vw,28px);white-space:nowrap;font-weight:700;letter-spacing:.04em;color:var(--dhis3);background:#e3eef9;border:2px dashed var(--dhis2);border-radius:14px;padding:14px;text-align:center}
+.dupbox{margin-top:12px;background:#fff4dc;border-left:4px solid #E69F00;border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:8px;font-size:14px}
+.dupb{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;background:#fff;border:2px solid var(--line);border-radius:10px;padding:10px 12px}
+.dupb b{color:var(--dhis2);font-family:"Roboto Mono",ui-monospace,monospace}
+.pidparts{display:flex;justify-content:space-between;gap:6px;margin-top:6px}
+.pidparts span{flex:1;text-align:center;font-size:12px;font-weight:700;color:var(--ink);display:flex;flex-direction:column}
+.pidparts b{font-family:"Roboto Mono",ui-monospace,monospace;font-size:14px;color:var(--dhis3)}
+.pidtag{font-family:"Roboto Mono",ui-monospace,monospace;font-size:12px;font-weight:700;color:var(--dhis2)}
+.draftbox{background:#fff4dc;border:2px solid #E69F00;border-radius:14px;padding:12px 14px;margin-bottom:14px;display:flex;flex-direction:column;gap:6px}
+.draftbox b{font-size:16px;color:var(--ink)}
+.draftbox span{font-size:14px;color:var(--ink)}
+.startbtns{display:flex;flex-direction:column;gap:12px}
+.startb{display:flex;flex-direction:column;align-items:flex-start;gap:4px;text-align:left;padding:18px;border-radius:16px;background:var(--dhis2);color:#fff;border:2px solid var(--dhis2)}
+.startb b{font-size:19px;font-weight:900}
+.startb span{font-size:14px;font-weight:700}
+.startb.fu{background:#fff;color:var(--dhis3)}
+.fucard{background:#e6f6f0;border:2px solid #009E73;border-radius:16px;padding:12px 14px;margin:0 0 12px;display:flex;flex-direction:column;gap:3px;font-size:14px;color:var(--ink)}
+.fucard b{font-size:18px;color:#00664a}
+.fucard .fusum{font-weight:700}
+.resumehere{outline:3px solid #E69F00;outline-offset:-3px;background:#fff8e6}
+.dose .dsel{display:flex;gap:8px;flex-wrap:wrap}
 @media print{
   .foot,.menubtn{display:none!important}
   .frame{display:none!important}
@@ -762,7 +813,7 @@ details.sgroup .ilist{border:0;border-radius:0;box-shadow:none}
 <div class="app">
   <header class="appbar">
     <img class="mohlogo" src="data:image/jpeg;base64,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" alt="Ministry of Health, Government of Sierra Leone">
-    <div class="ctxbtn"><b>PHU EMR</b><small>Ministry of Health · Sierra Leone</small></div>
+    <div class="ctxbtn"><b>Electronic Medical Record (EMR)</b><small>Ministry of Health</small></div>
     <button class="menubtn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="bnav"><span></span><span></span><span></span></button>
     <nav class="bnav" id="bnav" aria-label="Main menu">
   <button data-v="home"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><span>Home</span></button>
@@ -1420,7 +1471,7 @@ function buildHF2(c){
     const d = r.data, sx = d.sex; if (!SEXES.includes(sx)) return;
     const gi = ageGroup(G_NUT, days); if (gi < 0) return;
     const col = (out ? 'O' : 'F') + gi + sx, a = (row) => add(nut.data, row, col, r.id);
-    const z = v => v === ZC[0] ? 'n' : v === ZC[1] ? 'm' : v === ZC[2] ? 's' : '';
+    const z = v => (v === ZC[0] || v === ZC5[0] || v === ZC5[1] || v === ZC5[2]) ? 'n' : (v === ZC[1] || v === ZC5[3]) ? 'm' : (v === ZC[2] || v === ZC5[4]) ? 's' : '';
     if (z(d.waz)){ a('s_waz'); a('waz_' + z(d.waz)); }
     if (z(d.whz)){ a('s_whz'); a('whz_' + z(d.whz)); }
     const mu = d.muac === '' || d.muac == null ? NaN : +d.muac;
@@ -1451,8 +1502,9 @@ function buildHF3(c){
       if (!x || !inPeriod(x.date, c)) return;
       const yrs = Math.floor(daysBetween(d.dob, x.date) / YD), gi = ageGroup(G_TD, Math.max(yrs, 10)); if (gi < 0) return;
       let col;
-      if (d.cat === 'School going child' || x.site === 'In-school') col = 'SO' + gi;
-      else col = (d.cat === 'Pregnant' ? 'P' : 'N') + (x.site === 'Facility' ? 'F' : 'O') + gi;
+      const grp = x.grp || d.cat;
+      if (grp === 'School going child' || x.site === 'In-school') col = 'SO' + gi;
+      else col = (grp === 'Pregnant' ? 'P' : 'N') + (x.site === 'Facility' ? 'F' : 'O') + gi;
       add(t.data, k, col, r.id);
     });
   });
@@ -1507,6 +1559,242 @@ REG_KEYS.forEach(k => REG[k].sections.forEach(sec => {
 }));
 const capWords = v => String(v || '').replace(/(^|[\s\-'(\/.,])(\p{L})/gu, (m, a, b) => a + b.toUpperCase());
 const fullName = d => [d.firstName, d.middleName, d.lastName].filter(x => x && String(x).trim()).map(x => String(x).trim()).join(' ');
+
+/* Young infant register aligned with the 0-2 Month Register sheet, column by column:
+   address chiefdom and village, weight in the first 7 days with its band, breastfed
+   or not (each with its own feeding problem list), positioning, attachment and
+   suckling ratings, register wording, and Other problems before Disease classification. */
+(function(){
+  const R = REG.yi, sec = n => R.sections.find(x => x[0] === n)[1], byId = id => R.sections.reduce((acc, x) => acc.concat(x[1]), []).find(f => f.id === id);
+  const visit = sec('Visit');
+  visit.splice(visit.findIndex(f => f.id === 'address'), 0, F('addrChief','Address: chiefdom','hchief'));
+  byId('address').l = 'Address: village / community';
+  const hist = sec('History');
+  hist.splice(hist.findIndex(f => f.id === 'bwt'), 0, F('bwtKg','Weight in the first 7 days (kg)','num',null,{min:0.3,max:6}));
+  byId('bwt').l = 'Weight band in the first 7 days (set from the weight when it is entered)';
+  byId('bwt').o = ['<1.5 kg','1.5 - <2.5 kg','≥ 2.5 kg'];
+  byId('breathBirth').o = ['Gasping','Breathing poorly (<30/min)','Blue tongue/lips','None'];
+  byId('psbi').l = 'Very severe disease (PSBI): check all';
+  byId('psbi').o = ['Stopped feeding well or not feeding at all','Convulsions','Severe chest indrawing','Fever (37.5°C or above)','Low body temperature (less than 35.5°C)','Fast breathing (60 or more per minute on repeat count)','Moves only when stimulated or no movement when stimulated','Umbilicus red or draining pus','Skin pustules'];
+  byId('rr').l = 'Breathing count in one minute (/minute)';
+  byId('rr2').l = 'Repeat count if 60 or more (/minute)';
+  byId('spo2').l = 'Oxygen saturation (%)';
+  byId('jaund').l = 'Jaundice: check all';
+  byId('jaund').o = ['Yellow skin or face less than 24 hrs','Yellow palms and soles at any age','Jaundice appearing after 24 hrs of age and palms and soles not yellow','No jaundice'];
+  byId('dia').l = 'Diarrhoea';
+  byId('diaDays').l = 'How long? (days)';
+  byId('diaSigns').o = ['Blood in the stool','Moves only when stimulated','No movement when stimulated','Restless / irritable','Sunken eyes','Skin pinch goes back slowly','Skin pinch goes back very slowly'];
+  byId('hiv').l = 'Check for HIV infection';
+  const sig = sec('Signs found in the sick infant'), fi = sig.findIndex(f => f.id === 'fpBf');
+  sig.splice(fi, 0, F('bfStatus','Is the infant breastfed?','pill',['Breastfeeding','Not breastfeeding'],{req:1}));
+  const bf = { id:'bfStatus', eq:'Breastfeeding' }, nbf = { id:'bfStatus', eq:'Not breastfeeding' };
+  Object.assign(byId('fpBf'), { l:'Feeding problem (for all breastfeeding): check all', show: bf,
+    o:['Any breastfeeding difficulty','Less than 8 breastfeeds in 24 hrs','Switching breast frequently','Not increasing breastfeeding during illness','Receives other foods or drinks','Underweight (weight for age)','Mouth ulcers or thrush','No feeding problem / not underweight'] });
+  sig.splice(sig.findIndex(f => f.id === 'fpBf') + 1, 0,
+    F('bfPos','Positioning','pill',['Good','Poor'],{ show: bf }),
+    F('bfAtt','Attachment','pill',['Good','Poor','No attachment'],{ show: bf }),
+    F('bfSuck','Suckling','pill',['Good','Poor','Not suckling'],{ show: bf }));
+  Object.assign(byId('fpNbf'), { l:'Feeding problem (for all non-breastfeeding): check all', show: nbf,
+    o:['Giving inappropriate replacement feeds','Giving insufficient replacement feeds','Milk incorrectly or unhygienically prepared','Using a feeding bottle','HIV positive mother mixing breast milk and other feeds','Low weight for age','Thrush','No feeding problem'] });
+  byId('imm').l = 'Check immunisation status (up to 2 months)';
+  byId('vitAm').l = 'Check vitamin A for mother (within 6 weeks of birth)';
+  const cl = sec('Classification'), oi = cl.findIndex(f => f.id === 'other'), other = cl.splice(oi, 1)[0];
+  other.l = 'Other problems'; cl.unshift(other);
+  byId('counsel').l = 'Counsel mother: check all';
+  byId('counsel').o = ['On exclusive breastfeeding','Use of ITN','Keeping the young infant warm',"Child's immunisation",'On when to return'];
+  byId('kmc').l = 'Kangaroo mother care for LBW / preterm';
+  byId('kmc').o = ['None','Immediate (within 24 hrs of birth)','Intermittent','Continuous'];
+})();
+
+
+/* Adult in-patient register (18+ yrs) aligned with the Hospital In-Patient Register sheet:
+   S No. is automatic and Reg. No. is the hospital's own number; education and marital status
+   are radio choices; each "Other - specify" has its box; the women's conditions show for
+   women; outcome date and time are asked once an outcome is chosen. */
+(function(){
+  const R = REG.ipa, sec = n => R.sections.find(x => x[0] === n)[1], byId = id => R.sections.reduce((a, x) => a.concat(x[1]), []).find(f => f.id === id);
+  const adm = sec('Admission');
+  adm.splice(adm.findIndex(f => f.id === 'nin') + 1, 0, F('hospReg','Reg. No. (hospital registration number)','text'));
+  byId('nin').l = 'NIN (National Identification Number)';
+  byId('address').l = 'Address (residence)';
+  Object.assign(byId('edu'), { t:'pill', l:'Educational level' });
+  Object.assign(byId('marital'), { t:'pill', l:'Marital status', o:['Single','Married','Divorced','Widow(er)','Separated','Co-habiting','Prefer not to say'] });
+  byId('nok').l = 'Next of kin / caregiver: name';
+  byId('nokAddr').l = 'Next of kin / caregiver: address';
+  byId('nokRel').l = 'Next of kin / caregiver: relation';
+  byId('nokPhone').l = 'Next of kin / caregiver: phone number';
+  byId('dxInitial').l = 'Initial diagnosis (refer ICD)';
+  byId('principal').l = 'Principal diagnosis (refer ICD)';
+  byId('additional').l = 'Additional diagnosis (refer ICD)';
+  byId('seenBy').l = 'Seen by: name';
+  byId('designation').l = 'Seen by: designation';
+  const oc = sec('Other conditions');
+  Object.assign(byId('cats'), { l:'Pregnant, postnatal, lactating, family planning or menopause: check all', show:{ id:'sex', eq:'F' } });
+  byId('cancers').l = 'Cancers: check all';
+  byId('substance').l = 'Substance use: check all';
+  byId('disab').l = 'Disability status: check all';
+  oc.splice(oc.findIndex(f => f.id === 'cancers') + 1, 0, F('cancerOther','Other cancer: specify','text',null,{ req:1, cap:1, show:{ id:'cancers', has:'Other' } }));
+  oc.splice(oc.findIndex(f => f.id === 'substance') + 1, 0, F('substanceOther','Other substance: specify','text',null,{ req:1, cap:1, show:{ id:'substance', has:'Other' } }));
+  byId('otherCond').l = 'Other conditions (specify)';
+  oc.splice(oc.findIndex(f => f.id === 'disab') + 1, 0, F('disabOther','Other disability: specify','text',null,{ req:1, cap:1, show:{ id:'disab', has:'Others' } }));
+  byId('mh').l = 'Mental health conditions';
+  const has = { id:'outcome', not:[''] };
+  Object.assign(byId('outDate'), { l:'Outcome date', req:1, show: has });
+  Object.assign(byId('outTime'), { l:'Outcome time', show: has });
+  byId('autopsy').l = 'Autopsy';
+})();
+
+
+/* ---- EPI / Under 2 register and Td & HPV register, aligned column by column ---- */
+const ZC5 = ['≥ M (at or above the median)','-1 (between -1 and the median)','-2 (between -2 and -1)','-3 (between -3 and -2)','< -3 (below -3)'];
+(function(){
+  const flat = R => R.sections.reduce((a, x) => a.concat(x[1]), []);
+  const U = REG.u2, u = id => flat(U).find(f => f.id === id), child = U.sections.find(x => x[0] === 'Child')[1];
+  child.splice(child.findIndex(f => f.id === 'nin'), 0, F('epiReg','Reg. No. (register number)','text'));
+  u('nin').l = 'National Identification Number (NIN)';
+  u('dob').l = 'Child date of birth';
+  u('cg').l = 'Caregiver name';
+  u('phone').l = 'Caregiver phone number';
+  u('birthReg').l = 'Date of birth registered';
+  Object.assign(u('whz'), { l:'Z-score (Wt/Ht)', o: ZC5 });
+  Object.assign(u('waz'), { l:'Z-score (Wt/Age)', o: ZC5 });
+  u('oedema').l = 'Bilateral pitting pedal oedema';
+  u('pab').l = 'Protected at birth';
+  const ag = U.sections.find(x => x[0] === 'Antigens, vitamin A and deworming')[1];
+  ag.splice(ag.findIndex(f => f.id === 'doses') + 1, 0, F('fic','Fully immunised (worked out from the dose dates)','auto'));
+  u('llin').l = 'LLIN given at the time of Penta 3';
+  const T = REG.td, t = id => flat(T).find(f => f.id === id), client = T.sections.find(x => x[0] === 'Client')[1];
+  t('cg').l = 'Mother / caretaker name';
+  t('phone').l = 'Mother / caretaker / client phone number';
+  t('dob').l = 'Client date of birth';
+  t('cat').l = 'Client group today';
+  client.splice(client.findIndex(f => f.id === 'site'), 1,
+    F('hpvPlace','Place of vaccination (for HPV)','pill',['In-school','Out of school']),
+    F('hpvSchool','In-school: school name','text',null,{ cap:1, show:{ id:'hpvPlace', eq:'In-school' } }),
+    F('hpvSite','Out of school: site name','text',null,{ cap:1, show:{ id:'hpvPlace', eq:'Out of school' } }));
+  Object.assign(t('doses'), { l:'Date given, place and group for each dose (Td doses are recorded under non-pregnant, pregnant or school going)', groups:['Non-pregnant','Pregnant','School going child'] });
+})();
+
+/* ---- Patient ID questions on every register ----
+   First question of the details: does the patient have an ID? Yes shows the ID box with
+   Find; No creates a new ID automatically once the name is in, shown after the details. */
+REG_KEYS.forEach(k => {
+  REG[k].sections.forEach(x => { x[1] = x[1].filter(f => f.id !== 'nin'); });
+  const sec = REG[k].sections[1][1];
+  sec.unshift(F('hasNin','Does the patient have a National Identification Number (NIN)?','pill',['Yes','No'],{ req:1 }),
+              F('nin','NIN (National Identification Number)','ninf',null,{ req:1, show:{ id:'hasNin', eq:'Yes' } }),
+              F('hasPid','Does the patient already have a Patient ID?','pill',['Yes','No'],{ req:1, show:{ id:'hasNin', eq:'No' } }),
+              F('pidIn','Patient ID','pid',null,{ req:1, show:{ all:[{ id:'hasNin', eq:'No' }, { id:'hasPid', eq:'Yes' }] } }));
+  sec.push(F('pidNew','New Patient ID','pidnew',null,{ show:{ all:[{ id:'hasNin', eq:'No' }, { id:'hasPid', eq:'No' }] } }));
+});
+
+
+/* ---- Date of birth is asked and the age is worked out from it ----
+   Young infant: days; under five: months; general: years; child in-patient: months
+   under 5, years from 5; adult in-patient: years. Counted to the visit or admission date.
+   The address chiefdom question is removed from the young infant register. */
+const AGE_REGS = { yi:['ageDays'], ch:['ageMonths'], gen:['ageYears'], ipc:['ageUnit','age'], ipa:['age'] };
+const AGE_WORDS = { ageDays:'Age in days', ageMonths:'Age in months', ageYears:'Age in years', ageUnit:'Age recorded in', age:'Age' };
+Object.entries(AGE_REGS).forEach(([k, ids]) => {
+  const R = REG[k];
+  R.sections.forEach(x => { x[1] = x[1].filter(f => f.id !== 'addrChief'); });
+  const sec = R.sections.find(x => x[1].some(f => f.id === ids[0]))[1];
+  sec.splice(sec.findIndex(f => f.id === ids[0]), 0, F('dob','Date of birth','date',null,{ req:1 }));
+  ids.forEach(id => { const f = sec.find(x => x.id === id); f.t = 'auto'; delete f.req; delete f.o;
+    f.l = (k === 'ipc' && id === 'age' ? 'Age (months if under 5, years from 5)' : k === 'ipa' && id === 'age' ? 'Age in complete years' : AGE_WORDS[id]) + ' (worked out from the date of birth)'; });
+});
+function calAge(dob, on){
+  const a = pd(dob), b = pd(on); if (!a || !b) return null;
+  let months = (b.getFullYear() - a.getFullYear()) * 12 + (b.getMonth() - a.getMonth()); if (b.getDate() < a.getDate()) months--;
+  return { days: Math.round((b - a) / 86400000), months, years: Math.floor(months / 12) };
+}
+/* fills the age fields of this register from the date of birth */
+function fillAge(d){
+  const base = FORM.base || FORM.reg; if (!AGE_REGS[base] || FORM.fu || !d.dob) return;
+  const g = calAge(d.dob, d[REG[base].dateF] || new Date().toISOString().slice(0, 10)); if (!g || g.days < 0) return;
+  if (base === 'yi') d.ageDays = String(g.days);
+  if (base === 'ch') d.ageMonths = String(g.months);
+  if (base === 'gen') d.ageYears = String(g.years);
+  if (base === 'ipa') d.age = String(g.years);
+  if (base === 'ipc'){ d.ageUnit = g.months < 60 ? 'Months' : 'Years'; d.age = String(g.months < 60 ? g.months : g.years); }
+  AGE_REGS[base].forEach(id => { const el = document.getElementById('f_' + id); if (el) el.value = d[id] || ''; });
+}
+/* the register's age range, checked on the date of birth */
+function dobRangeError(d){
+  const base = FORM.base || FORM.reg; if (!AGE_REGS[base] || !d.dob) return '';
+  const on = d[REG[base].dateF]; if (!on) return '';
+  const g = calAge(d.dob, on); if (!g) return '';
+  if (g.days < 0) return 'Cannot be after the ' + (base === 'ipc' || base === 'ipa' ? 'date of admission' : 'date of the visit');
+  const now = base === 'yi' ? g.days + ' days' : g.months < 60 ? g.months + ' months' : g.years + ' years';
+  if (base === 'yi' && g.days > 59) return 'The young infant register is for 0 to 59 days; this child is ' + now;
+  if (base === 'ch' && (g.months < 2 || g.months > 59)) return 'The under five register is for 2 to 59 months; this child is ' + now;
+  if (base === 'gen' && (g.years < 5 || g.years > 120)) return 'The general register is for 5 years and above; this patient is ' + now;
+  if (base === 'ipc' && (g.months < 1 || g.years > 17)) return 'The child in-patient register is for 1 month to 17 years; this child is ' + now;
+  if (base === 'ipa' && (g.years < 18 || g.years > 120)) return 'The adult in-patient register is for 18 years and above; this patient is ' + now;
+  return '';
+}
+
+
+/* ---- Young infant presenting complaint: tick all that apply, Other opens a box ---- */
+const YI_COMPLAINTS = ['Not feeding well or unable to feed','Convulsions (fits)','Fever (feels hot)','Feels cold','Fast breathing','Difficult breathing','Noisy or grunting breathing','Cough',
+  'Blue lips or skin','Sleepy, weak or not moving well','Crying a lot or irritable','Vomiting','Vomiting everything','Diarrhoea','Blood in stool','No stool or constipation','Swollen belly',
+  'Yellow skin or eyes','Red, swollen or pus from the cord (umbilicus)','Skin boils, pustules or rash','Eye discharge or swollen eyes','Mouth sores or white patches (thrush)','Ear discharge',
+  'Bleeding','Not moving an arm or leg','Small baby or low birth weight','Not gaining weight or losing weight','None (routine or well-baby visit)','Other'];
+(function(){
+  const hist = REG.yi.sections.find(x => x[0] === 'History')[1], i = hist.findIndex(f => f.id === 'complaint');
+  Object.assign(hist[i], { t:'multi', o: YI_COMPLAINTS, l:"Presenting complaint (the young infant's problems): check all" });
+  hist.splice(i + 1, 0, F('complaintOther','Other complaint: type it','area',null,{ req:1, rows:6, w:'full', show:{ id:'complaint', has:'Other' } }));
+})();
+
+
+/* ---- Young infant medicine given: tick all that apply, Other opens a box ----
+   The Tracer and Life-saving Medicines and Antimalarial Products of the MoH registers. */
+const YI_MEDS = ['Albendazole 400mg, Tab','Aluminium Hydroxide 500mg, Tab','Amoxicillin 250mg, dispersible, Tab','Amoxicillin 500mg, Cap/Tab','Ampicillin 500mg, powder for inj, Vial',
+  'Ciprofloxacin 250mg, Tab','Ciprofloxacin 500mg, Tab','Clotrimazole 500mg, Pessary','Cotrimoxazole 480 mg, Tab','Dexamethasone 4mg/ml, Inj, 1 ml, Amp','Dextrose 5%, Solution, 500ml, Bag',
+  'Diazepam 5mg/ml, Inj 2ml, Amp','Erythromycin 250mg, Tab','Erythromycin 500mg, Tab','Ferrous Sulphate 125mg/ml, Oral drop, 30ml, Bot','Ferrous Sulphate 200mg, Tab',
+  '(Fefol) Ferrous/Folic acid, 200/0.4mg, Tab','Folic Acid 5mg, Tab','Gentamycin 0.5%, eye drops, 10ml, Bot','Gentamycin 40mg/ml, Inj, 2ml, Amp','Hydralazine 20mg/ml, powder for inj, 1ml, Vial',
+  'Lidocaine HCl 2%, 50ml, Vial','Magnesium Trisilicate, Tab','Magnesium Sulphate 20%, Inj, 10ml, Amp','Metronidazole 250mg, Tab','Metronidazole 5mg/ml, Solution, 100ml IV, Bag',
+  'Methyldopa 250mg, Tab','Misoprostol 200mcg, Tab','Normal Saline 0.9%, Solution, 500ml, Bag','(ORS) Oral Rehydration Salt, Sachet','Oxytocin 5IU, Inj, Amp',
+  'Paracetamol 250mg, dispersible, Tab','Paracetamol 500mg, Tab',"Ringer's Lactate, Solution, 500ml, Bag",'(RUTF) Ready to Use Therapeutic Food, Sachet','Zinc Sulfate 20mg, Tab',
+  'ACT (AL-6 Tab Blister or ASAQ-3 Tab Blister)','ACT (AL-12 Tab Blister or ASAQ-3 Tab Blister)','ACT (AL-18 Tab Blister or ASAQ-3 Tab Blister)','ACT (AL-24 Tab Blister or ASAQ-6 Tab Blister)',
+  'Artesunate 60mg/ml Inj, 1ml, Vial','LLIN (Long Lasting Insecticide-Treated Net), Piece','Quinine Sulphate 300mg, Tab','(SP) Sulphadoxine/Pyrimethamine 500/25mg, Tab','Other'];
+(function(){
+  const tr = REG.yi.sections.find(x => x[1].some(f => f.id === 'meds'))[1], i = tr.findIndex(f => f.id === 'meds');
+  Object.assign(tr[i], { t:'multi', o: YI_MEDS, l:'Medicine given: check all', w:'full' });
+  tr.splice(i + 1, 0, F('medsOther','Other medicine: type it','area',null,{ req:1, rows:6, w:'full', show:{ id:'meds', has:'Other' } }));
+})();
+
+/* ---- Follow-up questions are cut from the new-visit forms ----
+   They live in a follow-up form of their own, reached only from "Follow-up visit". */
+const FU_FIELDS = { yi:['fuDate','outcome'], ch:['fuDate','outcome'], gen:['outcome'], u2:['doses','llin','aefi','aefiDate'], td:['doses'], ipc:['outcome','outDate','outTime','autopsy'], ipa:['outcome','outDate','outTime','autopsy'] };
+const FU_KEEP = { u2:['doses','llin'], td:['doses'] };
+const FU_WORDS = {
+  yi:['New visit','First visit, or a new illness','Follow-up visit','Returning for follow-up: find the patient'],
+  ch:['New visit','First visit, or a new illness','Follow-up visit','Returning for follow-up: find the patient'],
+  gen:['New visit','First visit, or a new illness','Follow-up visit','Returning for follow-up: find the patient'],
+  u2:['New child','First contact at this facility','Next vaccination visit','Find the child and add today\u2019s doses'],
+  td:['New client','First Td or HPV dose here','Next dose visit','Find the client and add today\u2019s dose'],
+  ipc:['New admission','Admit a patient','Discharge or outcome','Find the admission and record the outcome'],
+  ipa:['New admission','Admit a patient','Discharge or outcome','Find the admission and record the outcome']
+};
+REG_KEYS.forEach(k => {
+  const R = REG[k], ids = FU_FIELDS[k], keep = FU_KEEP[k] || [];
+  const flat = R.sections.reduce((a, x) => a.concat(x[1]), []);
+  const picked = ids.map(id => flat.find(f => f.id === id)).filter(Boolean).map(f => keep.includes(f.id) ? f : f);
+  R.sections.forEach(sec => { sec[1] = sec[1].filter(f => (!ids.includes(f.id) || keep.includes(f.id)) && f.id !== 'visit'); });
+  R.sections = R.sections.filter(sec => sec[1].length);
+  let first = [];
+  if (k === 'ipc' || k === 'ipa') first = [];
+  else {
+    const fd = picked.find(f => f.id === 'fuDate');
+    first.push(fd ? Object.assign({}, fd, { l:'Date of follow-up visit', req:1 }) : F('fuDate', (k === 'u2' || k === 'td') ? 'Date of this visit' : 'Date of follow-up visit', 'date', null, { req:1 }));
+    first.push(F('fuSetting','Session','pill',SESSION,{ req:1 }));
+  }
+  const rest = picked.filter(f => f.id !== 'fuDate').map(f => f.id === 'outcome' ? Object.assign({}, f, { req:1 }) : f);
+  REG[k + '_fu'] = { code:R.code, title:R.title + ' · follow-up', sub:R.sub, feeds:R.feeds, dateF:(k === 'ipc' || k === 'ipa') ? 'outDate' : 'fuDate', base:k, sections:[['Follow-up visit', first.concat(rest)]] };
+  R.fuKey = k + '_fu';
+});
+
 /* Okabe and Ito colours per register, with a readable text colour on each */
 const RCOL = { yi:['#56B4E9','#07121b'], ch:['#009E73','#07121b'], gen:['#E69F00','#07121b'], u2:['#F0E442','#07121b'], td:['#CC79A7','#07121b'], ipc:['#D55E00','#07121b'], ipa:['#0072B2','#ffffff'] };
 const badge = (k, sm) => '<span class="rb' + (sm ? ' sm' : '') + '" style="--c:' + RCOL[k][0] + ';--ct:' + RCOL[k][1] + '">' + esc(REG[k].code) + '</span>';
@@ -1571,7 +1859,7 @@ const bindFilter = () => { const b = $('#flt'); if (b) b.onclick = openCtx; };
 function paintBar(){}
 /* ===================== NAVIGATION ===================== */
 let VIEW = 'home';
-const navOf = v => ['hf12','backup'].includes(v) ? 'more' : v === 'form' ? 'home' : v === 'stage' ? 'compare' : v;
+const navOf = v => ['hf12','backup'].includes(v) ? 'more' : (v === 'form' || v === 'fsearch') ? 'home' : v === 'stage' ? 'compare' : v;
 function go(v){ VIEW = v; render(); window.scrollTo(0, 0); }
 function render(){
   paintBar();
@@ -1580,7 +1868,7 @@ function render(){
   $('#foot').style.display = VIEW === 'form' ? 'none' : '';
   closeMenu();
   $$('#bnav button').forEach(b => b.classList.toggle('on', b.dataset.v === navOf(VIEW)));
-  ({ stage:vStage, compare:vCompare, home:vHome, records:vRecords, reports:vReports, more:vMore, dict:vDict, hf12:vHF12, backup:vBackup, form:vForm })[VIEW]($('#main'));
+  ({ fsearch:vFsearch, stage:vStage, compare:vCompare, home:vHome, records:vRecords, reports:vReports, more:vMore, dict:vDict, hf12:vHF12, backup:vBackup, form:vForm })[VIEW]($('#main'));
 }
 function needCtx(m, title){
   m.innerHTML = '<div class="ph"><h1>' + title + '</h1></div>' + filterBar() + '<div class="empty">Choose the district, chiefdom and PHU to see this.</div>';
@@ -1620,7 +1908,7 @@ function vHome(m){
   m.innerHTML =
     GROUPS.map(g => '<div class="lh">' + g[0] + '</div><div class="cards">' + g[1].map(regCard).join('') + '</div>').join('') +
     '<div style="height:10px"></div>';
-  m.querySelectorAll('.rcard').forEach(b => b.onclick = () => openForm(b.dataset.reg));
+  m.querySelectorAll('.rcard').forEach(b => b.onclick = () => startRegister(b.dataset.reg));
 }
 
 /* ===================== RECORDS ===================== */
@@ -1645,21 +1933,24 @@ function recList(){
     .sort((a, b) => String(recDate(b)).localeCompare(String(recDate(a))));
   $('#rc').textContent = list.length + ' record' + (list.length === 1 ? '' : 's');
   $('#rl').innerHTML = list.length ? list.map(r => '<button class="rec" data-id="' + r.id + '">' + badge(r.reg, true) + '<div class="rm"><div class="l1"><b>' + esc(r.data.name) + '</b><span class="muted sm">' + esc(recDate(r)) + '</span></div>' +
-    '<div class="muted sm">' + [ageText(r), r.data.sex === 'M' ? 'Male' : r.data.sex === 'F' ? 'Female' : '', r.data.outcome, r.data.regNo ? 'Reg ' + r.data.regNo : ''].filter(Boolean).map(esc).join(' · ') + '</div>' +
+    '<div class="muted sm">' + [r.data.parentId ? 'Follow-up visit' : '', r.data.patientId ? (r.data.nin && r.data.patientId === r.data.nin ? 'NIN ' : 'ID ') + r.data.patientId : '', ageText(r), r.data.sex === 'M' ? 'Male' : r.data.sex === 'F' ? 'Female' : '', r.data.outcome, r.data.regNo ? 'Reg ' + r.data.regNo : ''].filter(Boolean).map(esc).join(' · ') + '</div>' +
     '<div class="l3">' + esc(recSummary(r)) + '</div></div></button>').join('')
     : '<div class="empty">No record here yet.<br>Open a register on the Home page to start one.</div>';
-  $$('#rl .rec').forEach(b => b.onclick = () => { const r = DB.recs.find(x => x.id === b.dataset.id); openForm(r.reg, r.id); });
+  $$('#rl .rec').forEach(b => b.onclick = () => { const r = DB.recs.find(x => x.id === b.dataset.id); openForm(r.reg, r.data.parentId || r.id); });
 }
 
 /* ===================== FORM (one section per step) ===================== */
 let FORM = null;
 function openForm(reg, id){
+  const dk = reg + '|' + (id || 'new'), dr = (DB.drafts || {})[dk];
+  if (id && dr){ resumeDraft(dr); return; }
   const rec = id ? DB.recs.find(r => r.id === id) : null;
   const data = rec ? JSON.parse(JSON.stringify(rec.data)) : {}, L = DB.lastLoc || {};
   if (rec) ['district','chiefdom','facility','ftype'].forEach(k => { if (!data[k]) data[k] = (rec.ctx || {})[k] || ''; });
   if (rec && data.name && !data.firstName){ const w = String(data.name).trim().split(/\s+/); data.firstName = w[0] || ''; data.lastName = w.length > 1 ? w[w.length - 1] : ''; data.middleName = w.slice(1, -1).join(' '); }
   else { ['district','chiefdom','facility','ftype'].forEach(k => data[k] = L[k] || ''); data[REG[reg].dateF] = new Date().toISOString().slice(0, 10); }
-  FORM = { reg, id: rec ? rec.id : null, data, step: 0, errs: {} };
+  if (rec && !data.hasNin){ if (data.nin && NIN_RE.test(data.nin)) data.hasNin = 'Yes'; else if (data.patientId){ data.hasNin = 'No'; data.hasPid = 'Yes'; data.pidIn = data.patientId; } }
+  FORM = { reg, id: rec ? rec.id : null, data, step: 0, errs: {}, prefilledFrom: data.nin || data.pidIn || '' };
   go('form');
 }
 function defaultDate(){
@@ -1668,36 +1959,79 @@ function defaultDate(){
   return c.year + '-' + String(c.month).padStart(2, '0') + '-01';
 }
 const allFields = reg => REG[reg].sections.reduce((a, s) => a.concat(s[1]), []);
+const regSecs = k => REG[k].sections.concat(REG[k].fuKey ? [['Follow-up visit (asked only at follow-up)', REG[REG[k].fuKey].sections[0][1]]] : []);
 /* ---- one question per page ----
    Every field is its own page. Pages whose question does not apply
    (their show rule is not met) are skipped. Month and Year are not
    questions; they sit under the date they are filled from. */
 const pages = () => allFields(FORM.reg).filter(f => f.t !== 'auto' && f.t !== 'serial');
 const secOf = f => REG[FORM.reg].sections.find(sec => sec[1].includes(f))[0];
+
+/* ---- every question on one page, one question per row ---- */
+const modeSwitch = () => '<div class="seg fmode" id="fmode"><button data-fm="all" class="' + (formMode() === 'all' ? 'on' : '') + '">All questions on one page</button><button data-fm="step" class="' + (formMode() === 'step' ? 'on' : '') + '">One question at a time</button></div>';
+function bindModeSwitch(m){
+  $$('#fmode button').forEach(b => b.onclick = () => { collect(); DB.formMode = b.dataset.fm; save(); FORM.step = 0; vForm(m); window.scrollTo(0, 0); });
+}
+function answeredCount(){
+  const P = pages().filter(f => visible(f, FORM.data));
+  const done = P.filter(f => { const v = FORM.data[f.id]; return Array.isArray(v) ? v.length : (v && typeof v === 'object') ? Object.keys(v).length : v != null && v !== ''; }).length;
+  return [done, P.length];
+}
+function vFormAll(m){
+  const R = REG[FORM.reg], [done, total] = answeredCount();
+  let qn = 0;
+  m.innerHTML =
+    '<div class="fhd"><button class="ib" id="fx" aria-label="Close form">✕</button><div class="ft"><b>' + esc(R.title) + '</b><small>' + esc(FORM.data.facility || 'Facility not chosen yet') + (regNoShown() ? ' · <b class="regno">' + regWord() + esc(regNoShown()) + '</b>' : '') + ' · ' + (FORM.fu ? 'Follow-up' : FORM.id ? 'Editing' : 'New record') + '</small></div>' +
+      (FORM.id && !FORM.fu ? '<button class="ib del" id="fd" aria-label="Delete this record" title="Delete this record">🗑</button>' : '') + badge(FORM.base || FORM.reg) + '</div>' +
+    modeSwitch() + fuCard() +
+    '<div class="prog"><i id="fprog" style="width:' + (total ? done / total * 100 : 0) + '%"></i></div><div class="qmeta"><span>' + R.sections.length + ' sections</span><span id="fcount">' + done + ' of ' + total + ' answered</span></div>' +
+    '<form id="theForm" class="allform" novalidate>' + R.sections.map((sec, si) =>
+      '<section class="fsec"><div class="fsh"><i>' + (si + 1) + '</i>' + esc(sec[0]) + '</div><div class="fsb">' +
+        sec[1].filter(f => f.t !== 'serial').map(f => { const vis = visible(f, FORM.data); if (vis && f.t !== 'auto') qn++;
+          return fieldHTML(f, FORM.data[f.id]).replace('class="fld', 'class="fld' + (vis ? '' : ' hid')).replace('<label for=', '<label data-n="' + (f.t === 'auto' ? '' : qn) + '" for='); }).join('') +
+      '</div></section>').join('') + '</form>' +
+    '<div class="fbar"><button class="btn sec" id="fc">Cancel</button>' + (FORM.fu ? '' : '<button class="btn sec" id="fa">Save + new</button>') + '<button class="btn" id="fs">' + (FORM.fu ? 'Save follow-up' : 'Save') + '</button></div>';
+  const form = $('#theForm');
+  form.addEventListener('click', onFormClick); form.addEventListener('input', onFormInput); form.addEventListener('change', onFormInput);
+  form.onsubmit = e => e.preventDefault();
+  const leave = () => { if (FORM.touched) toast('Kept as unfinished. Open the register card to continue.'); go(FORM.id ? 'records' : 'home'); };
+  $('#fx').onclick = leave; $('#fc').onclick = leave;
+  $('#fs').onclick = () => saveForm(false);
+  if ($('#fa')) $('#fa').onclick = () => saveForm(true);
+  if ($('#fd')) $('#fd').onclick = () => delRec(FORM.id);
+  bindModeSwitch(m);
+  collect(); applyShow(); afterRender();
+}
+
 function nextVis(i, dir){ const P = pages(); for (let j = i + dir; j >= 0 && j < P.length; j += dir) if (visible(P[j], FORM.data)) return j; return -1; }
+const formMode = () => DB.formMode || 'all';
 function pageFields(){
+  if (formMode() === 'all') return allFields(FORM.reg).filter(x => x.t !== 'serial');
   const f = pages()[FORM.step], out = [f];
   if (f.id === REG[FORM.reg].dateF) allFields(FORM.reg).filter(x => x.id === 'month' || x.id === 'year').forEach(x => out.push(x));
   return out;
 }
 function vForm(m){
+  document.body.dataset.fmode = formMode();
+  if (formMode() === 'all') return vFormAll(m);
   const R = REG[FORM.reg], P = pages();
   if (!visible(P[FORM.step], FORM.data)){ const n = nextVis(FORM.step, 1); FORM.step = n >= 0 ? n : Math.max(0, nextVis(FORM.step, -1)); }
   const f = P[FORM.step], V = P.filter(x => visible(x, FORM.data)), pos = V.indexOf(f) + 1, n = V.length;
   const first = nextVis(FORM.step, -1) < 0, last = nextVis(FORM.step, 1) < 0;
   m.innerHTML =
-    '<div class="fhd"><button class="ib" id="fx" aria-label="Close form">✕</button><div class="ft"><b>' + esc(R.title) + '</b><small>' + esc(FORM.data.facility || 'Facility not chosen yet') + (regNoShown() ? ' · <b class="regno">Reg. No ' + esc(regNoShown()) + '</b>' : '') + ' · ' + (FORM.id ? 'Editing' : 'New record') + '</small></div>' +
-      (FORM.id ? '<button class="ib del" id="fd" aria-label="Delete this record" title="Delete this record">🗑</button>' : '') + badge(FORM.reg) + '</div>' +
+    '<div class="fhd"><button class="ib" id="fx" aria-label="Close form">✕</button><div class="ft"><b>' + esc(R.title) + '</b><small>' + esc(FORM.data.facility || 'Facility not chosen yet') + (regNoShown() ? ' · <b class="regno">' + regWord() + esc(regNoShown()) + '</b>' : '') + ' · ' + (FORM.fu ? 'Follow-up' : FORM.id ? 'Editing' : 'New record') + '</small></div>' +
+      (FORM.id && !FORM.fu ? '<button class="ib del" id="fd" aria-label="Delete this record" title="Delete this record">🗑</button>' : '') + badge(FORM.base || FORM.reg) + '</div>' +
+    modeSwitch() + fuCard() +
     '<div class="prog" role="progressbar" aria-valuemin="1" aria-valuemax="' + n + '" aria-valuenow="' + pos + '"><i style="width:' + (pos / n * 100) + '%"></i></div>' +
     '<div class="qmeta"><span>' + esc(secOf(f)) + '</span><span>Question ' + pos + ' of ' + n + '</span></div>' +
     '<div class="card qcard"><form class="stack" id="theForm" novalidate>' + pageFields().map(x => fieldHTML(x, FORM.data[x.id])).join('') + '</form></div>' +
     '<div class="fbar">' + (first ? '<button class="btn sec" id="fc">Cancel</button>' : '<button class="btn sec" id="fb">Back</button>') +
-      (last ? '<button class="btn sec" id="fa">Save + new</button><button class="btn" id="fs">Save</button>' : '<button class="btn" id="fn">Next</button>') + '</div>';
+      (last ? (FORM.fu ? '' : '<button class="btn sec" id="fa">Save + new</button>') + '<button class="btn" id="fs">' + (FORM.fu ? 'Save follow-up' : 'Save') + '</button>' : '<button class="btn" id="fn">Next</button>') + '</div>';
   const form = $('#theForm');
   form.addEventListener('click', onFormClick); form.addEventListener('input', onFormInput); form.addEventListener('change', onFormInput);
   form.onsubmit = e => e.preventDefault();
   form.addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.tagName === 'INPUT' && !e.target.classList.contains('csearch')){ e.preventDefault(); ($('#fn') || $('#fs')).click(); } });
-  const leave = () => go(FORM.id ? 'records' : 'home');
+  const leave = () => { if (FORM.touched) toast('Kept as unfinished. Open the register card to continue.'); go(FORM.id ? 'records' : 'home'); };
   $('#fx').onclick = leave;
   if ($('#fc')) $('#fc').onclick = leave;
   if ($('#fb')) $('#fb').onclick = () => { collect(); FORM.step = nextVis(FORM.step, -1); vForm(m); };
@@ -1705,6 +2039,8 @@ function vForm(m){
   if ($('#fs')) $('#fs').onclick = () => saveForm(false);
   if ($('#fa')) $('#fa').onclick = () => saveForm(true);
   if ($('#fd')) $('#fd').onclick = () => delRec(FORM.id);
+  bindModeSwitch(m);
+  afterRender();
   const inp = form.querySelector('input:not([readonly]):not([type=date]):not([type=checkbox]),select,textarea');
   if (inp && window.matchMedia('(min-width:700px)').matches) inp.focus({ preventScroll:true });
   collect();
@@ -1713,6 +2049,16 @@ function vForm(m){
 function fieldHTML(f, v){
   const id = 'f_' + f.id; let h = '';
   switch (f.t){
+    case 'pid':
+      h = '<div class="pidrow"><input id="' + id + '" data-f="' + f.id + '" data-pid="1" type="text" autocapitalize="characters" autocomplete="off" spellcheck="false" placeholder="MK900512112435" maxlength="17" value="' + esc(v || '') + '">' +
+        '<button type="button" class="btn sec sm" data-findpat="1">Find by name, phone or village</button></div><div id="pidst">' + pidStatus(v) + '</div>'; break;
+    case 'ninf':
+      h = '<div class="pidrow"><input id="' + id + '" data-f="' + f.id + '" data-nin="1" type="text" autocapitalize="characters" autocomplete="off" spellcheck="false" maxlength="30" style="text-transform:uppercase" value="' + esc(v || '') + '"></div><div id="ninst">' + ninStatus(v) + '</div>'; break;
+    case 'pidnew':
+      h = '<div id="pidnew">' + pidNewHTML() + '</div>'; break;
+    case 'hchief': {
+      const di = FAC.d.indexOf(FORM.data.district), list = di < 0 ? [] : [...new Set(FAC.f.filter(x => x[0] === di).map(x => FAC.c[x[1]]))].sort();
+      h = '<select id="' + id + '" data-f="' + f.id + '">' + opts(list.concat(['Another district']), v || '', di < 0 ? 'Choose the district on the first page' : 'Select chiefdom') + '</select>'; break; }
     case 'loc':
       h = locSelect(f.id, FORM.data, 'id="' + id + '" data-f="' + f.id + '" data-loc="1"'); break;
     case 'auto':
@@ -1724,7 +2070,7 @@ function fieldHTML(f, v){
     case 'num':
       h = '<input id="' + id + '" data-f="' + f.id + '" type="number" step="any" inputmode="decimal" value="' + esc(v == null ? '' : v) + '">'; break;
     case 'area':
-      h = '<textarea id="' + id + '" data-f="' + f.id + '">' + esc(v || '') + '</textarea>'; break;
+      h = '<textarea id="' + id + '" data-f="' + f.id + '"' + (f.rows ? ' rows="' + f.rows + '" style="min-height:' + (f.rows * 1.7) + 'em"' : '') + '>' + esc(v || '') + '</textarea>'; break;
     case 'sel':
       h = '<select id="' + id + '" data-f="' + f.id + '">' + opts(f.o, v || '', 'Select') + '</select>'; break;
     case 'dx6':
@@ -1751,7 +2097,8 @@ function fieldHTML(f, v){
         const x = (v || {})[o[0]] || {};
         const site = f.sites ? '<select data-ds="' + o[0] + '" aria-label="' + esc(o[1]) + ' place">' + opts(f.sites, x.site || f.sites[0]) + '</select>'
           : '<label class="o"><input type="checkbox" data-do="' + o[0] + '"' + (x.out ? ' checked' : '') + '> Outreach</label>';
-        return '<div class="dose' + (x.date ? ' has' : '') + '"><b>' + esc(o[1]) + '</b>' + site + '<input type="date" data-dd="' + o[0] + '" value="' + esc(x.date || '') + '" aria-label="' + esc(o[1]) + ' date"></div>';
+        const grp = f.groups && /^TD/.test(o[0]) ? '<select data-dg="' + o[0] + '" aria-label="' + esc(o[1]) + ' group">' + opts(f.groups, x.grp || FORM.data.cat || f.groups[0]) + '</select>' : '';
+        return '<div class="dose' + (x.date ? ' has' : '') + '"><b>' + esc(o[1]) + '</b>' + (grp ? '<span class="dsel">' + site + grp + '</span>' : site) + '<input type="date" data-dd="' + o[0] + '" value="' + esc(x.date || '') + '" aria-label="' + esc(o[1]) + ' date"></div>';
       }).join('') + '</div>'; break;
   }
   const err = FORM && FORM.errs[f.id];
@@ -1764,9 +2111,14 @@ function clearErr(el){
   const f = pages().find(x => x.id === id) || allFields(FORM.reg).find(x => x.id === id);
   if (f && !fieldError(f, FORM.data)){ delete FORM.errs[id]; w.classList.remove('bad'); const e = document.getElementById('e_' + id); if (e) e.textContent = ''; }
 }
-const EXCLUSIVE = /^(None|No jaundice|No feeding problem)$/;
+const EXCLUSIVE = /^(None|None \(routine or well-baby visit\)|No jaundice|No feeding problem|No feeding problem \/ not underweight)$/;
 function onFormClick(e){
+  const fb = e.target.closest('[data-findpat]');
+  if (fb){ openPatientFinder(p => usePatient(p)); return; }
+  const ub = e.target.closest('[data-usepid]');
+  if (ub){ usePatient(DB.patients[ub.dataset.usepid]); return; }
   const b = e.target.closest('.pl'); if (!b) return;
+  FORM.touched = true; const wf = b.closest('.fld'); if (wf) FORM.lastField = wf.id.slice(2);
   const grp = b.closest('[data-t]'); if (!grp) return;
   if (grp.dataset.t === 'pill'){
     const was = b.classList.contains('on');
@@ -1786,6 +2138,21 @@ function onFormClick(e){
 }
 function onFormInput(e){
   const t = e.target;
+  FORM.touched = true; const wf = t.closest && t.closest('.fld'); if (wf) FORM.lastField = wf.id.slice(2);
+  if (t.dataset && t.dataset.nin && e.type === 'input'){
+    const nv = ninFmt(t.value); if (nv !== t.value) t.value = nv;
+    collect();
+    const found = nv && patientByNin(nv);
+    if (found && FORM.prefilledFrom !== nv){ usePatient(found); return; }
+    paintPid(); clearErr(t); return;
+  }
+  if (t.dataset && t.dataset.pid && e.type === 'input'){
+    const fv = pidFmt(t.value); if (fv !== t.value) t.value = fv;
+    collect();
+    const found = pidValid(fv) && (DB.patients || {})[fv];
+    if (found && FORM.prefilledFrom !== fv){ usePatient(found); return; }
+    paintPid(); clearErr(t); return;
+  }
   if (t.dataset && t.dataset.loc){
     if (e.type !== 'change') return;
     collect(); locChange(FORM.data, t.dataset.f, t.value); if (t.value) delete FORM.errs[t.dataset.f];
@@ -1806,13 +2173,14 @@ function collect(){
   const d = FORM.data;
   pageFields().forEach(f => {
     const w = document.getElementById('w_' + f.id); if (!w) return;
-    if (['text','date','time','num','area','sel','dx6','loc'].includes(f.t)) d[f.id] = w.querySelector('[data-f]').value.trim();
+    if (['text','date','time','num','area','sel','dx6','loc','hchief','pid','ninf'].includes(f.t)) d[f.id] = w.querySelector('[data-f]').value.trim();
     else if (f.t === 'pill'){ const on = w.querySelector('.pl.on'); d[f.id] = on ? on.dataset.v : ''; }
     else if (f.t === 'multi' || f.t === 'conds1' || f.t === 'conds6') d[f.id] = Array.from(w.querySelectorAll('.pl.on')).map(x => x.dataset.v);
     else if (f.t === 'qty'){ const o = {}; w.querySelectorAll('input[data-q]').forEach(i => { if (i.value !== '') o[i.dataset.q] = +i.value; }); d[f.id] = o; }
     else if (f.t === 'doses'){ const o = {}; w.querySelectorAll('input[data-dd]').forEach(i => { const k = i.dataset.dd; if (!i.value) return;
       const chk = w.querySelector('[data-do="' + k + '"]'), sel = w.querySelector('[data-ds="' + k + '"]');
-      o[k] = { date: i.value }; if (chk) o[k].out = chk.checked; if (sel) o[k].site = sel.value; }); d[f.id] = o; }
+      const gs = w.querySelector('[data-dg="' + k + '"]');
+      o[k] = { date: i.value }; if (chk) o[k].out = chk.checked; if (sel) o[k].site = sel.value; if (gs) o[k].grp = gs.value; }); d[f.id] = o; }
     if (f.t === 'conds1' || f.t === 'conds6'){
       const ch = document.getElementById('ch_' + f.id);
       if (ch) ch.innerHTML = d[f.id].length ? d[f.id].map(k => '<span class="chip">✓ ' + esc(LABEL[k]) + '</span>').join('') : '<span class="hint" style="margin:0">Nothing ticked yet</span>';
@@ -1820,15 +2188,27 @@ function collect(){
   });
   pageFields().forEach(f => { if (f.cap && d[f.id]) d[f.id] = capWords(d[f.id]); if (f.phone && d[f.id]) d[f.id] = String(d[f.id]).replace(/\D/g, '').slice(0, 9); });
   if ('firstName' in d || 'lastName' in d) d.name = fullName(d);
-  /* Month and Year always follow the date */
-  const dt = pd(d[REG[FORM.reg].dateF]);
-  d.month = dt ? MONTHS[dt.getMonth()] : ''; d.year = dt ? String(dt.getFullYear()) : '';
-  const fm = document.getElementById('f_month'), fy = document.getElementById('f_year');
-  if (fm) fm.value = d.month; if (fy) fy.value = d.year;
+  if (FORM.reg === 'yi' && d.bwtKg !== undefined && d.bwtKg !== '' && !isNaN(+d.bwtKg)){ const w = +d.bwtKg; d.bwt = w < 1.5 ? '<1.5 kg' : w < 2.5 ? '1.5 - <2.5 kg' : '≥ 2.5 kg'; }
+  fillAge(d);
+  if ((FORM.base || FORM.reg) === 'u2'){
+    const need = ['BCG','HB0','OPV1','OPV2','OPV3','IPV1','IPV2','PCV1','PCV2','PCV3','PEN1','PEN2','PEN3','RVV1','RVV2','MR1','MAL1','MAL2','MAL3','TCV','YF'], ds = d.doses || {};
+    const miss = need.filter(k => !(ds[k] || {}).date);
+    d.fic = miss.length ? 'Not yet: ' + miss.length + ' of ' + need.length + ' doses still to give' : 'Yes: fully immunised on ' + need.map(k => ds[k].date).sort().pop();
+    const fe = document.getElementById('f_fic'); if (fe) fe.value = d.fic;
+  }
+  /* Month and Year always follow the date of the first visit */
+  if (!FORM.fu){
+    const dt = pd(d[REG[FORM.reg].dateF]);
+    d.month = dt ? MONTHS[dt.getMonth()] : ''; d.year = dt ? String(dt.getFullYear()) : '';
+    const fm = document.getElementById('f_month'), fy = document.getElementById('f_year');
+    if (fm) fm.value = d.month; if (fy) fy.value = d.year;
+  }
+  saveDraftSoon();
   return d;
 }
 function visible(f, d){
   const s = f.show; if (!s) return true;
+  if (s.all) return s.all.every(c => visible({ show: c }, d));
   const v = d[s.id];
   if (s.eq != null) return v === s.eq;
   if (s.in) return s.in.includes(v);
@@ -1836,7 +2216,14 @@ function visible(f, d){
   if (s.has) return (v || []).includes(s.has);
   return true;
 }
-function applyShow(){}
+function applyShow(){
+  if (FORM) paintPid();
+  if (formMode() !== 'all' || !FORM) return;
+  allFields(FORM.reg).forEach(f => { const w = document.getElementById('w_' + f.id); if (w) w.classList.toggle('hid', !visible(f, FORM.data)); });
+  let n = 0; allFields(FORM.reg).forEach(f => { const w = document.getElementById('w_' + f.id); if (!w || f.t === 'auto' || f.t === 'serial') return; const lab = w.querySelector('label'); if (visible(f, FORM.data)){ n++; if (lab) lab.dataset.n = n; } });
+  const c = answeredCount(), el = document.getElementById('fcount'), pr = document.getElementById('fprog');
+  if (el) el.textContent = c[0] + ' of ' + c[1] + ' answered'; if (pr) pr.style.width = (c[1] ? c[0] / c[1] * 100 : 0) + '%';
+}
 /* checks every step, not only the one on screen */
 /* Reg. No: 1, 2, 3 ... counted separately for each register at each facility */
 function nextRegNo(reg, d){
@@ -1844,15 +2231,22 @@ function nextRegNo(reg, d){
   DB.recs.forEach(r => { if (r.reg === reg && r.ctx && r.ctx.district === d.district && r.ctx.chiefdom === d.chiefdom && r.ctx.facility === d.facility){ const n = parseInt(r.data.regNo, 10); if (!isNaN(n) && n > max) max = n; } });
   return max + 1;
 }
+const regWord = () => (FORM && ['ipa','ipc'].includes(FORM.base || FORM.reg)) ? 'S. No ' : 'Reg. No ';
 const regNoShown = () => FORM.data.regNo ? FORM.data.regNo : (FORM.data.facility ? nextRegNo(FORM.reg, FORM.data) : '');
 function fieldError(f, d){
   if (!visible(f, d)) return '';
   const v = d[f.id];
   if (f.req && (v == null || v === '' || (Array.isArray(v) && !v.length))) return 'This question needs an answer';
+  if (f.t === 'pid' && v && !pidValid(v)) return 'This Patient ID is not valid. Check each character on the card, or use Find.';
+  if (f.id === 'dob' && v){ const m = dobRangeError(d); if (m) return m; }
+  if (f.t === 'ninf' && v && !NIN_RE.test(v)) return 'The NIN can only have letters and numbers';
+  if (f.id === 'fuDate' && FORM.fu && v){ const r0 = DB.recs.find(x => x.id === FORM.id); if (r0 && recDate(r0) && v < recDate(r0)) return 'Cannot be before the first visit (' + recDate(r0) + ')'; }
   if (f.phone && v && !/^\d{9}$/.test(v)) return 'Enter exactly 9 digits (' + String(v).length + ' entered)';
   if (f.t === 'num' && v != null && v !== ''){ const n = +v; if (isNaN(n)) return 'Numbers only'; if ((f.min != null && n < f.min) || (f.max != null && n > f.max)) return 'Enter ' + f.min + ' to ' + f.max; }
   if (FORM.reg === 'ipc' && f.id === 'age' && v !== '' && v != null){ const n = +v; if (d.ageUnit === 'Years' && (n < 5 || n > 17)) return 'Years: 5 to 17'; if (d.ageUnit === 'Months' && (n < 1 || n > 59)) return 'Months: 1 to 59'; }
   if ((f.id === 'firstContact' || f.id === 'regDate') && d[f.id] && d.dob && d[f.id] < d.dob) return 'Cannot be before date of birth';
+  if (f.id === 'outDate' && v && d.admDate && v < d.admDate) return 'Cannot be before the date of admission';
+  if (f.id === 'outTime' && v && d.outDate && d.outDate === d.admDate && d.admTime && v < d.admTime) return 'Cannot be before the time of admission on the same day';
   if (f.t === 'doses' && d.dob && Object.values(d.doses || {}).some(x => x.date < d.dob)) return 'A dose date is before the date of birth';
   return '';
 }
@@ -1865,12 +2259,17 @@ function validate(){
   if (!ids.length) return true;
   FORM.step = pages().findIndex(f => f.id === ids[0]);
   vForm($('#main'));
+  if (formMode() === 'all'){ const w = document.getElementById('w_' + ids[0]); if (w) w.scrollIntoView({ behavior:'smooth', block:'center' }); }
   toast(ids.length === 1 ? 'One question needs an answer' : ids.length + ' questions need an answer');
   return false;
 }
 function saveForm(again){
   collect();
   if (!validate()) return;
+  if (FORM.fu) return saveFollowUp();
+  const dd = FORM.data;
+  dd.patientId = patientIdFor(dd);
+  if (!dd.visit) dd.visit = 'New';
   const d = FORM.data, ctx = { district:d.district, chiefdom:d.chiefdom, facility:d.facility, ftype:d.ftype };
   allFields(FORM.reg).forEach(f => { if (!['auto','serial','loc'].includes(f.t) && !visible(f, d)) delete d[f.id]; });
   if (!d.regNo) d.regNo = String(nextRegNo(FORM.reg, d));
@@ -1880,13 +2279,294 @@ function saveForm(again){
   /* the Records and Reports views follow the facility and month just recorded */
   Object.assign(DB.ctx, ctx);
   const dt = pd(d[REG[FORM.reg].dateF]); if (dt){ DB.ctx.month = dt.getMonth() + 1; DB.ctx.year = dt.getFullYear(); }
-  if (save()) toast('Record saved · Reg. No ' + d.regNo);
+  upsertPatient(FORM.reg, d);
+  clearTimeout(draftT); FORM.touched = false;
+  delete (DB.drafts || {})[draftKey()];
+  if (save()) toast('Record saved · Patient ID ' + d.patientId);
   if (again) openForm(FORM.reg); else go('records');
 }
 function delRec(id){
   sheet('<div class="shd"><b>Delete this record?</b></div><p class="muted">It will be removed from the records and from the summary forms. This cannot be undone.</p><div class="row"><button class="btn sec" id="dn">Keep it</button><button class="btn danger" id="dy">Delete</button></div>');
   $('#dn').onclick = () => closeSheet(true);
   $('#dy').onclick = () => { DB.recs = DB.recs.filter(r => r.id !== id); save(); closeSheet(true); toast('Record deleted'); go('records'); };
+}
+
+
+/* ===================== PATIENT ID =====================
+   The National Identification Number (SL followed by 9 digits) is the patient's ID when
+   they have one. Without it, the Patient ID is 14 characters, LLYYMMDDHHMMSS:
+   first and last name initials, date of birth (year, month, day) and the time the ID was
+   made (hour, minute, second), e.g. Mohamed Kanu, born 1990-05-12, at 11:24:35 gives
+   MK900512112435. When only the age is known, the date of birth is worked out from the age.
+   Before an ID is given out it is checked against every patient, record and unfinished
+   record on this device; if taken, the time moves on one second until it is free.
+   IDs made by the earlier version (e.g. 1M9PX-07QT6-Y5GSW) are still accepted. */
+const NIN_RE = /^[A-Z0-9]+$/;
+const ninFmt = v => String(v || '').toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 30);
+const normPid = v => String(v || '').toUpperCase().replace(/[^0-9A-Z]/g, '');
+const B32 = '0123456789ABCDEFGHJKMNPQRSTVWXYZ';
+function pidCheck(body){
+  let factor = 2, sum = 0;
+  for (let i = body.length - 1; i >= 0; i--){ const add = factor * B32.indexOf(body[i]); factor = factor === 2 ? 1 : 2; sum += Math.floor(add / 32) + (add % 32); }
+  return B32[(32 - sum % 32) % 32];
+}
+const isNewStyle = v => /^[A-Z]{1,2}$|^[A-Z]{2}/.test(normPid(v));
+function pidFmt(v){
+  const raw = normPid(v);
+  if (!raw) return '';
+  if (/^[A-Z]/.test(raw)) return raw.slice(0, 2) + raw.slice(2).replace(/O/g, '0').replace(/[IL]/g, '1').replace(/\D/g, '').slice(0, 12);
+  const r = raw.replace(/O/g, '0').replace(/[IL]/g, '1').slice(0, 15);
+  return r.match(/.{1,5}/g).join('-');
+}
+function pidValid(v){
+  const f = pidFmt(v), r = normPid(f);
+  if ((DB.patients || {})[r]) return true;
+  const m = /^[A-Z]{2}(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})$/.exec(r);
+  if (m) return +m[2] >= 1 && +m[2] <= 12 && +m[3] >= 1 && +m[3] <= 31 && +m[4] < 24 && +m[5] < 60 && +m[6] < 60;
+  return r.length === 15 && /^[0-9A-HJKMNP-TV-Z]+$/.test(r) && pidCheck(r.slice(0, 14)) === r[14];
+}
+const idTaken = id => !!((DB.patients || {})[id] || DB.recs.some(r => r.data.patientId === id) || Object.entries(DB.drafts || {}).some(([k, x]) => (!FORM || k !== draftKey()) && x.data && x.data.patientIdNew === id));
+/* initials and date of birth (given, or worked out from the age) for the new ID */
+function idBasis(d){
+  const base = FORM.base || FORM.reg;
+  const ini = [d.firstName, d.lastName].map(x => (String(x || '').toUpperCase().replace(/[^A-Z]/g, '')[0] || '')).join('');
+  let dob = d.dob || '', est = false;
+  if (!dob && ['ageDays','ageMonths','ageYears','age'].some(k => d[k] != null && d[k] !== '')){
+    const days = ageDays({ reg: base, data: d });
+    if (days != null && !isNaN(days)){ const x = pd(d[REG[base].dateF]) || new Date(); x.setDate(x.getDate() - Math.round(days)); dob = x.toISOString().slice(0, 10); est = true; }
+  }
+  return { ini, dob, est, ok: ini.length === 2 && /^\d{4}-\d{2}-\d{2}$/.test(dob) };
+}
+function buildNewId(d){
+  const b = idBasis(d); if (!b.ok) return '';
+  if (!d.pidTime){ const n = new Date(); d.pidTime = [n.getHours(), n.getMinutes(), n.getSeconds()].map(x => String(x).padStart(2, '0')).join(''); }
+  const make = () => b.ini + b.dob.slice(2).replace(/-/g, '') + d.pidTime;
+  let id = make(), guard = 0;
+  while (idTaken(id) && guard++ < 86400){
+    let t = +d.pidTime.slice(0, 2) * 3600 + +d.pidTime.slice(2, 4) * 60 + +d.pidTime.slice(4) + 1; t %= 86400;
+    d.pidTime = [Math.floor(t / 3600), Math.floor(t / 60) % 60, t % 60].map(x => String(x).padStart(2, '0')).join('');
+    id = make();
+  }
+  d.patientIdNew = id;
+  return id;
+}
+const patientByNin = nin => Object.values(DB.patients || {}).find(p => p.nin === nin || p.pid === nin);
+/* the ID this record is saved under */
+function patientIdFor(d){
+  if (d.hasNin === 'Yes'){ const p = patientByNin(d.nin); return p ? p.pid : d.nin; }
+  if (d.hasPid === 'Yes') return pidFmt(d.pidIn);
+  return buildNewId(d);
+}
+/* one entry per person, whichever register they were seen in */
+const PAT_KEYS = ['firstName','middleName','lastName','sex','nin','cg','phone','addrChief','address','addrNow','addrPrev','occupation','edu','marital','nok','nokAddr','nokRel','nokPhone'];
+function upsertPatient(reg, d){
+  if (!d.patientId) return;
+  DB.patients = DB.patients || {};
+  const p = DB.patients[d.patientId] || { pid: d.patientId, created: new Date().toISOString(), registers: [] };
+  PAT_KEYS.forEach(k => { if (d[k] != null && d[k] !== '') p[k] = d[k]; });
+  const vd = d[REG[reg].dateF] || new Date().toISOString().slice(0, 10);
+  if (d.dob){ p.dob = d.dob; p.dobEst = false; }
+  else if (!p.dob || p.dobEst){ const days = ageDays({ reg, data: d }); if (days != null && !isNaN(days)){ const x = pd(vd); x.setDate(x.getDate() - Math.round(days)); p.dob = x.toISOString().slice(0, 10); p.dobEst = true; } }
+  p.name = fullName(p); if (!p.registers.includes(reg)) p.registers.push(reg);
+  p.lastSeen = vd; p.lastFacility = d.facility || p.lastFacility; p.updated = new Date().toISOString();
+  DB.patients[d.patientId] = p;
+}
+function ageNow(dob, on){
+  const days = daysBetween(dob, on || new Date().toISOString().slice(0, 10));
+  return days < 60 ? days + ' days' : days < 5 * YD ? Math.floor(days / MD) + ' months' : Math.floor(days / YD) + ' years';
+}
+/* fill the details of a known patient into the empty questions of this form */
+function prefillFromPatient(p){
+  const d = FORM.data, has = new Set(allFields(FORM.reg).map(f => f.id)), set = (k, v) => { if (has.has(k) && (d[k] == null || d[k] === '' || (Array.isArray(d[k]) && !d[k].length)) && v != null && v !== '') d[k] = v; };
+  PAT_KEYS.forEach(k => set(k, p[k]));
+  set('address', p.address || p.addrNow); set('addrNow', p.addrNow || p.address);
+  if (p.dob){
+    if (!p.dobEst) set('dob', p.dob);
+    const days = daysBetween(p.dob, d[REG[FORM.reg].dateF] || new Date().toISOString().slice(0, 10));
+    if (days >= 0){
+      set('ageDays', String(Math.round(days))); set('ageMonths', String(Math.floor(days / MD))); set('ageYears', String(Math.floor(days / YD)));
+      if (FORM.reg === 'ipa') set('age', String(Math.floor(days / YD)));
+      if (FORM.reg === 'ipc'){ set('ageUnit', days < 5 * YD ? 'Months' : 'Years'); set('age', String(days < 5 * YD ? Math.floor(days / MD) : Math.floor(days / YD))); }
+    }
+  }
+  d.name = fullName(d);
+}
+function usePatient(p){
+  if (!p) return;
+  closeSheet(true);
+  if (p.nin){ Object.assign(FORM.data, { hasNin:'Yes', nin:p.nin }); FORM.prefilledFrom = p.nin; FORM.lastField = 'nin'; }
+  else { Object.assign(FORM.data, { hasNin:'No', hasPid:'Yes', pidIn:p.pid }); FORM.prefilledFrom = p.pid; FORM.lastField = 'pidIn'; }
+  delete FORM.data.patientIdNew; delete FORM.data.pidTime; FORM.touched = true;
+  prefillFromPatient(p); ['nin','hasNin','pidIn','hasPid'].forEach(k => delete FORM.errs[k]);
+  const y = window.scrollY; vForm($('#main')); window.scrollTo(0, y);
+  toast('Patient found: ' + p.name + '. Details filled in.');
+}
+function pidStatus(v){
+  if (!v) return '<p class="hint">Type the ID from the patient\u2019s card, or find the patient by name, phone or village.</p>';
+  const f = pidFmt(v), r = normPid(f), need = /^[A-Z]/.test(r) ? 14 : 15;
+  if (r.length < need) return '<p class="hint">' + r.length + ' of ' + need + ' characters</p>';
+  if (!pidValid(v)) return '<p class="pidbad">This ID is not valid. It should be 2 letters (initials), the date of birth as YYMMDD and a time as HHMMSS, e.g. MK900512112435.</p>';
+  const p = (DB.patients || {})[f];
+  return p ? '<div class="pidok"><b>Patient found: ' + esc(p.name) + '</b><span>' + esc([p.sex === 'M' ? 'Male' : p.sex === 'F' ? 'Female' : '', p.dob ? ageNow(p.dob) + (p.dobEst ? ' (about)' : '') : '', p.address || p.addrNow || ''].filter(Boolean).join(' · ')) + '</span><span>Their details are filled in below. Check them with the patient.</span></div>'
+    : '<p class="pidwarn">Valid ID, but this patient is not on this device yet. Fill in their details below.</p>';
+}
+function pidNewHTML(){
+  const d = FORM.data;
+  if (d.hasNin !== 'No' || d.hasPid !== 'No') return '';
+  const b = idBasis(d);
+  if (!b.ok){ delete d.patientIdNew; return '<p class="hint">The new Patient ID appears here once the first name, last name and ' + (allFields(FORM.reg).some(f => f.id === 'dob') ? 'date of birth' : 'age') + ' are entered.</p>'; }
+  buildNewId(d);
+  const same = Object.values(DB.patients || {}).filter(p => (p.firstName || '').toLowerCase() === d.firstName.toLowerCase() && (p.lastName || '').toLowerCase() === d.lastName.toLowerCase() && (!d.sex || !p.sex || p.sex === d.sex));
+  return '<div class="pidbig">' + d.patientIdNew + '</div><p class="hint">Write this ID on the patient\u2019s card or book. It is saved with the record and finds the patient at follow-up.</p>' +
+    (same.length ? '<div class="dupbox"><b>This may be a patient already registered. If it is the same person, use their ID:</b>' + same.slice(0, 5).map(p =>
+      '<button type="button" class="dupb" data-usepid="' + p.pid + '"><span>' + esc(p.name) + ' · ' + esc(p.sex === 'M' ? 'Male' : p.sex === 'F' ? 'Female' : '') + (p.dob ? ' · ' + esc(ageNow(p.dob)) : '') + (p.address || p.addrNow ? ' · ' + esc(p.address || p.addrNow) : '') + '</span><b>Use ' + p.pid + '</b></button>').join('') + '</div>' : '');
+}
+function ninStatus(v){
+  const r = ninFmt(v);
+  if (!r) return '<p class="hint">Type the NIN exactly as it is on the National ID card. Letters become capitals.</p>';
+  const p = patientByNin(r);
+  return p ? '<div class="pidok"><b>Patient found: ' + esc(p.name) + '</b><span>' + esc([p.sex === 'M' ? 'Male' : p.sex === 'F' ? 'Female' : '', p.dob ? ageNow(p.dob) + (p.dobEst ? ' (about)' : '') : '', p.address || p.addrNow || ''].filter(Boolean).join(' · ')) + '</span><span>Their details are filled in below. Check them with the patient.</span></div>'
+    : '<p class="pidwarn">This patient is not on this device yet. Fill in their details below; the NIN is their Patient ID.</p>';
+}
+function paintPid(){
+  const ns = document.getElementById('ninst'); if (ns) ns.innerHTML = ninStatus(FORM.data.nin);
+  const st = document.getElementById('pidst'); if (st) st.innerHTML = pidStatus(FORM.data.pidIn);
+  const pn = document.getElementById('pidnew'); if (pn) pn.innerHTML = pidNewHTML();
+}
+function patientMatches(q){
+  const words = q.toLowerCase().split(/\s+/).filter(Boolean), qp = normPid(q);
+  return Object.values(DB.patients || {}).filter(p => {
+    if (qp.length >= 4 && normPid(p.pid).includes(qp)) return true;
+    const hay = [p.pid, p.name, p.phone, p.cg, p.address, p.addrNow, p.addrChief, p.nin, p.nokPhone].filter(Boolean).join(' ').toLowerCase();
+    return words.length && words.every(w => hay.includes(w));
+  }).sort((a, b) => String(b.lastSeen).localeCompare(String(a.lastSeen)));
+}
+function openPatientFinder(onPick){
+  sheet('<div class="shd"><b>Find the patient</b><button class="btn sm sec" data-close>Close</button></div>' +
+    '<input class="search" id="pfq" type="search" placeholder="NIN, Patient ID, name, phone or village" autocomplete="off"><div id="pfl"></div>');
+  const draw = () => {
+    const q = $('#pfq').value.trim(), list = q ? patientMatches(q).slice(0, 30) : Object.values(DB.patients || {}).sort((a, b) => String(b.lastSeen).localeCompare(String(a.lastSeen))).slice(0, 15);
+    $('#pfl').innerHTML = (q ? '' : '<div class="h" style="margin:10px 2px 6px">Recently seen</div>') + (list.length ? list.map(p => '<button class="rec" data-pp="' + p.pid + '"><div class="rm"><div class="l1"><b>' + esc(p.name) + '</b><span class="pidtag">' + p.pid + '</span></div>' +
+      '<div class="muted sm">' + esc([p.sex === 'M' ? 'Male' : p.sex === 'F' ? 'Female' : '', p.dob ? ageNow(p.dob) + (p.dobEst ? ' (about)' : '') : '', p.address || p.addrNow || '', p.phone || ''].filter(Boolean).join(' · ')) + '</div>' +
+      '<div class="sm">Last seen ' + esc(p.lastSeen || '') + (p.lastFacility ? ' at ' + esc(p.lastFacility) : '') + '</div></div></button>').join('') : '<div class="empty">No patient matches. Check the spelling, or answer No to create a new Patient ID.</div>');
+    $$('#pfl [data-pp]').forEach(b => b.onclick = () => onPick(DB.patients[b.dataset.pp]));
+  };
+  $('#pfq').oninput = draw; draw(); setTimeout(() => $('#pfq').focus(), 50);
+}
+
+/* ===================== NEW VISIT OR FOLLOW-UP ===================== */
+function startRegister(reg){
+  const R = REG[reg], W = FU_WORDS[reg], dr = (DB.drafts || {})[reg + '|new'];
+  sheet('<div class="shd">' + badge(reg) + '<b>' + esc(R.title) + '<small class="shs">' + esc(AGE[reg] || R.sub) + '</small></b><button class="btn sm sec" data-close>Close</button></div>' +
+    (dr ? '<div class="draftbox"><b>Unfinished record</b><span>' + esc(dr.data.name || 'No name yet') + ' · ' + dr.done + ' of ' + dr.total + ' answered · stopped at \u201c' + esc(fieldLabel(dr.reg, dr.lastField)) + '\u201d · ' + esc(timeAgo(dr.at)) + '</span>' +
+      '<div class="row"><button class="btn" id="drc">Continue where you stopped</button><button class="btn sec" id="drd">Discard it</button></div></div>' : '') +
+    '<div class="startbtns"><button class="startb" id="stNew"><b>' + esc(W[0]) + '</b><span>' + esc(W[1]) + '</span></button><button class="startb fu" id="stFu"><b>' + esc(W[2]) + '</b><span>' + esc(W[3]) + '</span></button></div>');
+  if (dr){ $('#drc').onclick = () => { closeSheet(true); resumeDraft(dr); }; $('#drd').onclick = () => { delete DB.drafts[reg + '|new']; save(); startRegister(reg); }; }
+  $('#stNew').onclick = () => { closeSheet(true); if (dr) delete DB.drafts[reg + '|new']; openForm(reg); };
+  $('#stFu').onclick = () => { closeSheet(true); FS_REG = reg; FSQ = ''; go('fsearch'); };
+}
+let FS_REG = 'yi', FSQ = '';
+function vFsearch(m){
+  const R = REG[FS_REG];
+  m.innerHTML = '<button class="back" id="bk">‹ Home</button><div class="ph"><h1>' + esc(FU_WORDS[FS_REG][2]) + '</h1></div>' +
+    '<p class="cintro">' + esc(R.title) + ': type the NIN or Patient ID, or part of the name, phone number or village.</p>' +
+    '<input class="search" id="fsq" type="search" placeholder="NIN, Patient ID, name, phone or village" value="' + esc(FSQ) + '" autocomplete="off"><div id="fsl"></div>';
+  $('#bk').onclick = () => go('home');
+  $('#fsq').oninput = e => { FSQ = e.target.value; fsList(); };
+  fsList(); setTimeout(() => { const q = $('#fsq'); if (q) q.focus(); }, 50);
+}
+function fsList(){
+  const q = FSQ.trim(), words = q.toLowerCase().split(/\s+/).filter(Boolean), qp = normPid(q);
+  let list = DB.recs.filter(r => r.reg === FS_REG && !r.data.parentId);
+  if (q) list = list.filter(r => { const d = r.data;
+    if (qp.length >= 4 && normPid(d.patientId).includes(qp)) return true;
+    const hay = [d.patientId, d.name, d.phone, d.cg, d.address, d.addrNow, d.addrChief, d.nin, d.regNo, d.nokPhone].filter(Boolean).join(' ').toLowerCase();
+    return words.every(w => hay.includes(w)); });
+  list.sort((a, b) => String(recDate(b)).localeCompare(String(recDate(a))));
+  const status = r => { const d = r.data;
+    if (FS_REG === 'u2' || FS_REG === 'td') return Object.keys(d.doses || {}).length + ' doses given' + (d.fic && /^Yes/.test(d.fic) ? ' · fully immunised' : '');
+    if (FS_REG === 'ipc' || FS_REG === 'ipa') return d.outcome ? 'Outcome: ' + d.outcome : 'Still admitted';
+    return d.outcome ? 'Last outcome: ' + d.outcome : 'Follow-up not yet recorded'; };
+  $('#fsl').innerHTML = (q ? '<div class="h" style="margin:4px 2px 8px">' + list.length + ' found</div>' : '<div class="h" style="margin:4px 2px 8px">Most recent</div>') +
+    (list.length ? list.slice(0, 40).map(r => '<button class="rec" data-fu="' + r.id + '">' + badge(r.reg, true) + '<div class="rm"><div class="l1"><b>' + esc(r.data.name || '') + '</b><span class="muted sm">' + esc(recDate(r)) + '</span></div>' +
+      '<div class="muted sm">' + esc([r.data.patientId ? 'ID ' + r.data.patientId : 'No Patient ID', ageText(r), r.data.sex === 'M' ? 'Male' : r.data.sex === 'F' ? 'Female' : '', r.data.address || r.data.addrNow || ''].filter(Boolean).join(' · ')) + '</div>' +
+      '<div class="l3">' + esc(status(r)) + ' · ' + esc(r.data.facility || '') + '</div></div></button>').join('')
+      : '<div class="empty">No ' + esc(REG[FS_REG].title.toLowerCase()) + ' record matches. Check the spelling or the ID, or start a new visit.</div>');
+  $$('#fsl [data-fu]').forEach(b => b.onclick = () => openFollowUp(b.dataset.fu));
+}
+function openFollowUp(recId){
+  const rec = DB.recs.find(r => r.id === recId); if (!rec) return;
+  const fuKey = REG[rec.reg].fuKey, dr = (DB.drafts || {})[fuKey + '|' + recId];
+  if (dr){ resumeDraft(dr); return; }
+  const data = JSON.parse(JSON.stringify(rec.data));
+  if (rec.reg !== 'ipc' && rec.reg !== 'ipa') data.fuDate = new Date().toISOString().slice(0, 10);
+  data.fuSetting = '';
+  FORM = { reg: fuKey, base: rec.reg, id: recId, fu: true, data, step: 0, errs: {} };
+  go('form');
+}
+function fuCard(){
+  if (!FORM.fu) return '';
+  const r = DB.recs.find(x => x.id === FORM.id); if (!r) return '';
+  const d = r.data, visits = (d.fuVisits || []).length;
+  return '<div class="fucard"><div class="h">Follow-up for</div><b>' + esc(d.name || '') + '</b>' +
+    '<span>' + esc([d.patientId ? 'Patient ID ' + d.patientId : '', regWord() + (d.regNo || ''), ageText(r), d.sex === 'M' ? 'Male' : d.sex === 'F' ? 'Female' : ''].filter(Boolean).join(' · ')) + '</span>' +
+    '<span>First seen ' + esc(recDate(r)) + ' at ' + esc(d.facility || '') + (visits ? ' · ' + visits + ' earlier follow-up' + (visits === 1 ? '' : 's') : '') + '</span>' +
+    (recSummary(r) ? '<span class="fusum">' + esc(recSummary(r)) + '</span>' : '') + '</div>';
+}
+function saveFollowUp(){
+  const d = FORM.data, r = DB.recs.find(x => x.id === FORM.id), base = FORM.base;
+  allFields(FORM.reg).forEach(f => { if (f.id === 'fuSetting') return; if (!visible(f, d)){ delete r.data[f.id]; return; } r.data[f.id] = d[f.id]; });
+  if (base === 'u2') r.data.fic = d.fic;
+  const vdate = d.fuDate || d.outDate || new Date().toISOString().slice(0, 10);
+  (r.data.fuVisits = r.data.fuVisits || []).push({ date: vdate, setting: d.fuSetting || '', outcome: d.outcome || '', at: new Date().toISOString() });
+  r.updated = new Date().toISOString();
+  /* at the OPD registers a follow-up is also a consultation of its own (HF1 follow-up cases) */
+  if (['yi','ch','gen'].includes(base)){
+    const v = {}, dt = pd(vdate);
+    ['firstName','middleName','lastName','name','sex','ageDays','ageMonths','ageYears','addrChief','address','nin','patientId','hasPid','pidIn','regNo','district','chiefdom','facility','ftype'].forEach(k => { if (r.data[k] != null) v[k] = r.data[k]; });
+    Object.assign(v, { date: vdate, visit: 'Follow-up', setting: d.fuSetting, outcome: d.outcome || '', parentId: r.id, month: dt ? MONTHS[dt.getMonth()] : '', year: dt ? String(dt.getFullYear()) : '' });
+    DB.recs.push({ id: uid(), reg: base, ctx: r.ctx, created: new Date().toISOString(), data: v });
+  }
+  if (r.data.patientId){ upsertPatient(base, r.data); DB.patients[r.data.patientId].lastSeen = vdate; }
+  clearTimeout(draftT); FORM.touched = false;
+  delete (DB.drafts || {})[draftKey()];
+  if (save()) toast('Follow-up saved for ' + (r.data.name || 'the patient'));
+  go('records');
+}
+
+/* ===================== RESUME WHERE YOU STOPPED =====================
+   Every change is kept as an unfinished record, with the question last touched. */
+const draftKey = () => FORM.reg + '|' + (FORM.id || 'new');
+let draftT = null;
+function saveDraftSoon(){
+  if (!FORM || !FORM.touched) return;
+  clearTimeout(draftT);
+  draftT = setTimeout(() => {
+    if (!FORM) return;
+    const c = answeredCount();
+    DB.drafts = DB.drafts || {};
+    DB.drafts[draftKey()] = { reg: FORM.reg, base: FORM.base, id: FORM.id, fu: !!FORM.fu, data: JSON.parse(JSON.stringify(FORM.data)), step: FORM.step, lastField: FORM.lastField || '', at: new Date().toISOString(), done: c[0], total: c[1] };
+    save();
+  }, 250);
+}
+function resumeDraft(dr){
+  FORM = { reg: dr.reg, base: dr.base, id: dr.id, fu: dr.fu, data: JSON.parse(JSON.stringify(dr.data)), step: dr.step || 0, errs: {}, touched: true, lastField: dr.lastField, resume: true, prefilledFrom: dr.data.nin || dr.data.pidIn || '' };
+  if (formMode() === 'step' && dr.lastField){ const i = pages().findIndex(f => f.id === dr.lastField); if (i >= 0) FORM.step = i; }
+  go('form');
+}
+function afterRender(){
+  if (!FORM || !FORM.resume) return;
+  FORM.resume = false;
+  setTimeout(() => {
+    const w = document.getElementById('w_' + FORM.lastField);
+    if (w){ w.scrollIntoView({ block:'center' }); w.classList.add('resumehere'); setTimeout(() => w.classList.remove('resumehere'), 3500); }
+    toast('Continuing where you stopped');
+  }, 60);
+}
+const fieldLabel = (reg, id) => { const f = (REG[reg] ? allFields(reg) : []).find(x => x.id === id); return f ? f.l.replace(/\s*\(.*$/, '') : 'the start'; };
+function timeAgo(iso){
+  const m = Math.round((Date.now() - new Date(iso)) / 60000);
+  return m < 1 ? 'just now' : m < 60 ? m + ' min ago' : m < 1440 ? Math.round(m / 60) + ' hours ago' : Math.round(m / 1440) + ' days ago';
 }
 
 /* ===================== REPORTS ===================== */
@@ -2069,7 +2749,7 @@ function buildRules(){
     else put('HF1','hf1m',k,OPD_R,['conds'],'conds includes "' + LABEL[k] + '"');
   });
   /* HF1 attendance */
-  [['opd',[],'Every consultation in the young infant, under five and general registers'],['new',['visit'],'visit is New or blank'],['fu',['visit'],'visit = Follow-up'],
+  [['opd',[],'Every consultation in the young infant, under five and general registers'],['new',['visit'],'A new visit (set automatically when New visit is chosen on the register card)'],['fu',['visit'],'A follow-up visit (saved from Follow-up visit on the register card)'],
    ['ref',['referred'],'referred = Yes'],['dis',['disab','cats'],'under five: disab = Yes; general: cats includes Disability'],
    ['fhc',['pay','cats'],'All under fives, plus general patients with pay = Free Health Care or cats includes Pregnant or Lactating'],
    ['preg',['cats'],'cats includes Pregnant'],['lact',['cats'],'cats includes Lactating'],['evd',['cats'],'cats includes EVD survivor'],['u5',[],'Age under 5 years (all young infant and under five records)']]
@@ -2090,8 +2770,8 @@ function buildRules(){
   put('HF2','hf2y','VA2',['u2'],['doses'],doseRule('VA2') + ' (Vitamin A 12-59 m)');
   put('HF2','hf2y','DW',['u2'],['doses'],'doses.DW1 or doses.DW2 has a date in the month');
   /* HF2 nutrition surveillance */
-  [['s_waz',['waz'],'waz is filled'],['waz_n',['waz'],'waz = ' + ZC[0]],['waz_m',['waz'],'waz = ' + ZC[1]],['waz_s',['waz'],'waz = ' + ZC[2]],
-   ['s_whz',['whz'],'whz is filled'],['whz_n',['whz'],'whz = ' + ZC[0]],['whz_m',['whz'],'whz = ' + ZC[1]],['whz_s',['whz'],'whz = ' + ZC[2]],
+  [['s_waz',['waz'],'waz is filled'],['waz_n',['waz'],'waz is ≥ -2 (under 2 register: ≥ M, -1 or -2)'],['waz_m',['waz'],'waz is -3 to -2 (under 2 register: -3)'],['waz_s',['waz'],'waz is < -3 (under 2 register: < -3)'],
+   ['s_whz',['whz'],'whz is filled'],['whz_n',['whz'],'whz is ≥ -2 (under 2 register: ≥ M, -1 or -2)'],['whz_m',['whz'],'whz is -3 to -2 (under 2 register: -3)'],['whz_s',['whz'],'whz is < -3 (under 2 register: < -3)'],
    ['s_muac',['muac'],'muac is filled'],['muac_r',['muac'],'muac below 11.5 cm'],['muac_y',['muac'],'muac from 11.5 to below 12.5 cm'],['muac_g',['muac'],'muac 12.5 cm or more'],
    ['oed',['oedema'],'oedema is +, ++ or +++']].forEach(([k, v, rule]) => put('HF2','hf2n',k,['u2','ch'],v,rule + ' (Under 2 register at first contact; under five register at the visit)'));
   put('HF2','hf2m','sam',['u2','ch'],['whz','muac','oedema'],'Weight for height column: whz = ' + ZC[2] + '. MUAC column: muac below 11.5 cm. Oedema column: oedema is +, ++ or +++');
@@ -2151,8 +2831,8 @@ function feedsOf(reg, fid){
   DIMS.forEach(d => { if ((d.vars[reg] || []).includes(fid)) out.push(d.form + ' · ' + TBLINFO[d.tbl].title.replace(/ \(.*$/, '') + ' (breakdown)'); });
   return [...new Set(out)];
 }
-const TYPE_NAME = { dx6:'Choose one (HF5 diagnosis list)', conds6:'Choose any (HF5 diagnosis list)', serial:'Numbered automatically: 1, 2, 3 for each register at each facility', loc:'Choose one (national facility list)', auto:'Filled automatically from the date', text:'Text', num:'Number', date:'Date', time:'Time', area:'Long text', sel:'Choose one (list)', pill:'Choose one', multi:'Choose any', conds1:'Choose any (HF1 conditions)', conds6:'Choose any (diagnosis list)', dx6:'Choose one (diagnosis list)', qty:'Quantities', doses:'Date per dose' };
-const optText = f => f.t === 'serial' ? '' : f.t === 'loc' ? 'Cascades: District, Chiefdom / Zone, PHU, Facility type' : f.t === 'auto' ? '' : f.t === 'conds1' ? HF1.filter(r => !HF1_AUTO.test(r[0])).length + ' HF1 conditions' : (f.t === 'conds6' || f.t === 'dx6') ? HF5.length + ' HF5 diagnoses' :
+const TYPE_NAME = { ninf:'NIN: letters and numbers', pid:'Patient ID: typed, or found by name, phone or village', pidnew:'Patient ID created automatically', hchief:'Choose one (chiefdoms of the district)', dx6:'Choose one (HF5 diagnosis list)', conds6:'Choose any (HF5 diagnosis list)', serial:'Numbered automatically: 1, 2, 3 for each register at each facility', loc:'Choose one (national facility list)', auto:'Filled automatically from the date', text:'Text', num:'Number', date:'Date', time:'Time', area:'Long text', sel:'Choose one (list)', pill:'Choose one', multi:'Choose any', conds1:'Choose any (HF1 conditions)', conds6:'Choose any (diagnosis list)', dx6:'Choose one (diagnosis list)', qty:'Quantities', doses:'Date per dose' };
+const optText = f => f.t === 'hchief' ? 'Chiefdoms of the district chosen on the first page, or Another district' : f.t === 'serial' ? '' : f.t === 'loc' ? 'Cascades: District, Chiefdom / Zone, PHU, Facility type' : f.t === 'auto' ? '' : f.t === 'conds1' ? HF1.filter(r => !HF1_AUTO.test(r[0])).length + ' HF1 conditions' : (f.t === 'conds6' || f.t === 'dx6') ? HF5.length + ' HF5 diagnoses' :
   f.t === 'doses' ? f.o.map(o => o[0]).join(', ') : Array.isArray(f.o) ? f.o.map(o => Array.isArray(o) ? o[0] + '=' + o[1] : o).join(' | ') : '';
 let DMODE = 'forms', DQ = '';
 function vDict(m){
@@ -2188,7 +2868,7 @@ function dictList(){
   } else {
     el.innerHTML = VIS.map(k => {
       const R = REG[k];
-      const secs = R.sections.map(s => [s[0], s[1].filter(f => !q || (f.id + ' ' + f.l).toLowerCase().includes(q))]).filter(s => s[1].length);
+      const secs = regSecs(k).map(s => [s[0], s[1].filter(f => !q || (f.id + ' ' + f.l).toLowerCase().includes(q))]).filter(s => s[1].length);
       if (!secs.length) return '';
       return '<details class="reg"' + (q ? ' open' : '') + '><summary>' + badge(k) + '<span class="rt"><b>' + esc(R.title) + '</b><small>' + allFields(k).length + ' variables · ' + (R.feeds.length ? 'feeds ' + R.feeds.join(', ') : 'recorded only, no summary form') + '</small></span><span class="chev">▾</span></summary>' +
         secs.map(s => '<div class="fs">' + esc(s[0]) + '</div>' + s[1].map(f => {
@@ -2208,7 +2888,7 @@ function dictCSV1(){
 }
 function dictCSV2(){
   const lines = [['Register','Section','Variable','Label','Type','Options','Required','Feeds'].map(csvQ).join(',')];
-  VIS.forEach(k => REG[k].sections.forEach(s => s[1].forEach(f =>
+  VIS.forEach(k => regSecs(k).forEach(s => s[1].forEach(f =>
     lines.push([REG[k].title, s[0], f.id, f.l, TYPE_NAME[f.t], optText(f), f.req ? 'Yes' : '', feedsOf(k, f.id).join('; ') || 'Recorded only'].map(csvQ).join(',')))));
   download('PHU_EMR_register_variables.csv', lines.join('\n'), 'text/csv');
 }
@@ -2513,7 +3193,7 @@ function vStage(m){
   stageRegs(i).forEach(k => {
     const R = REG[k], rr = recs.filter(r => r.reg === k), nn = rr.length;
     h += '<details class="reg sreg" open><summary>' + badge(k) + '<span class="rt"><b>' + esc(R.title) + '</b><small>' + nn + ' patient' + (nn === 1 ? '' : 's') + ' in this life stage</small></span><span class="chev">▾</span></summary>';
-    R.sections.forEach(sec => {
+    regSecs(k).forEach(sec => {
       const qs = sec[1].filter(f => ['pill','multi','sel'].includes(f.t) && f.o);
       if (!qs.length) return;
       h += '<div class="fs">' + esc(sec[0]) + '</div>' + qs.map(f => {
@@ -2607,6 +3287,14 @@ document.addEventListener('click', e => { if (!e.target.closest('#bnav') && !e.t
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
 $('#sheet').onclick = e => { if (e.target.id === 'sheet') closeSheet(VIEW === 'form'); };
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && $('#sheet').classList.contains('on')) closeSheet(VIEW === 'form'); });
+(function(){
+  let moved = 0;
+  const fix = (reg, d) => { if (reg !== 'yi' || !d) return;
+    [['complaint','complaintOther'],['meds','medsOther']].forEach(([a, o]) => { if (typeof d[a] === 'string'){ const t = d[a].trim(); d[a] = t ? ['Other'] : []; if (t && !d[o]) d[o] = t; moved++; } }); };
+  DB.recs.forEach(r => fix(r.reg, r.data));
+  Object.values(DB.drafts || {}).forEach(x => fix(x.base || x.reg, x.data));
+  if (moved) save();
+})();
 go('home');
 </script>
 </body>
